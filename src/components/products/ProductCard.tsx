@@ -4,7 +4,7 @@ import { Product, User } from "@prisma/client";
 import dayjs from "dayjs";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import HeartButton from "./HeartButton";
+import HeartButton from "../HeartButton";
 
 interface ProductCardProps {
   data: Product;

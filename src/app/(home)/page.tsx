@@ -2,7 +2,7 @@ import Image from "next/image";
 import Container from "@/components/Container";
 import getProducts, { ProductsParams } from "../actions/getProducts";
 import EmptyState from "@/components/EmptyState";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/products/ProductCard";
 import getCurrentUser from "../actions/getCurrentUser";
 import FloatingButton from "@/components/FloatingButton";
 import Categories from "@/components/categories/Categories";

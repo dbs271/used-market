@@ -1,5 +1,7 @@
 "use client";
+import { fromNow } from "@/helpers/dayjs";
 import { Product, User } from "@prisma/client";
+import dayjs from "dayjs";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import HeartButton from "./HeartButton";
@@ -32,12 +34,12 @@ const ProductCard = ({ data, currentUser }: ProductCardProps) => {
 
         <div className="text-lg font-semibold">{data.title}</div>
         <div className="font-light text-neutral-500">{data.category}</div>
-        <div>
+        <div className="flex flex-row items-center justify-between gap-1">
           <div>
             {data.price} {""}
             <span className="font-light">원</span>
           </div>
-          <div>{/* {data.createAt} */}</div>
+          <div>{fromNow(data.createAt)}</div>
         </div>
       </div>
     </div>

@@ -8,7 +8,6 @@ import ProductInfo from "@/components/products/ProductInfo";
 import { Product, User } from "@prisma/client";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { IconType } from "react-icons";
 
 interface ProductClientProps {
   product: Product & { user: User };

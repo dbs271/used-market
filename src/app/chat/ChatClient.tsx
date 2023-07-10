@@ -1,5 +1,6 @@
 "use client";
 
+import Contacts from "@/components/chat/Contacts";
 import { TUserWithChat } from "@/types";
 import { User } from "@prisma/client";
 import axios from "axios";
@@ -27,7 +28,9 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
     refreshInterval: 1000,
   });
 
-  users?.find((user: TUserWithChat) => user.email === currentUser?.email);
+  const currentUserWithMessage = users?.find(
+    (user: TUserWithChat) => user.email === currentUser?.email
+  );
 
   if (error) return <p>Error</p>;
   if (isLoading) return <p>Loading...</p>;
@@ -40,7 +43,12 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
     <main>
       <div className="grid grid-clos-[1fr] md:grid-clos-[300px_1fr]">
         <section className={`md:flex ${layout && "hidden"}`}>
-          Contact Component
+          <Contacts
+            users={users}
+            currentUser={currentUserWithMessage}
+            setLayout={setLayout}
+            setReceiver={setReceiver}
+          />
         </section>
         <section className={`md:flex ${!layout && "hidden"}`}>
           Chat Component

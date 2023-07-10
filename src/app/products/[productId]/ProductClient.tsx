@@ -1,12 +1,14 @@
 "use client";
 
 import Button from "@/components/Button";
+import { categories } from "@/components/categories/Categories";
 import Container from "@/components/Container";
 import ProductHead from "@/components/products/ProductHead";
 import ProductInfo from "@/components/products/ProductInfo";
 import { Product, User } from "@prisma/client";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import { IconType } from "react-icons";
 
 interface ProductClientProps {
   product: Product & { user: User };
@@ -18,6 +20,9 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
   const KakaoMap = dynamic(() => import("../../../components/KakaoMap"), {
     ssr: false,
   });
+
+  const category = categories.find((item) => item.path === product.category);
+
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto ">
@@ -29,7 +34,12 @@ const ProductClient = ({ product, currentUser }: ProductClientProps) => {
             currentUser={currentUser}
           />
           <div className="grid grid-cols-1 mt-6 md:grid-cols-2 md:gap-10">
-            <ProductInfo />
+            <ProductInfo
+              user={product.user}
+              category={category}
+              createdAt={product.createAt}
+              description={product.description}
+            />
             <div>
               <KakaoMap
                 detailPage

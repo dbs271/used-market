@@ -1,5 +1,6 @@
 "use client";
 
+import Chat from "@/components/chat/Chat";
 import Contacts from "@/components/chat/Contacts";
 import { TUserWithChat } from "@/types";
 import { User } from "@prisma/client";
@@ -41,7 +42,7 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
 
   return (
     <main>
-      <div className="grid grid-clos-[1fr] md:grid-clos-[300px_1fr]">
+      <div className="grid grid-clos-[1fr] md:grid-cols-[300px_1fr]">
         <section className={`md:flex ${layout && "hidden"}`}>
           <Contacts
             users={users}
@@ -51,7 +52,11 @@ const ChatClient = ({ currentUser }: ChatClientProps) => {
           />
         </section>
         <section className={`md:flex ${!layout && "hidden"}`}>
-          Chat Component
+          <Chat
+            currentUser={currentUserWithMessage}
+            receiver={receiver}
+            setLayout={setLayout}
+          />
         </section>
       </div>
     </main>

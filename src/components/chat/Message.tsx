@@ -1,4 +1,5 @@
 import { fromNow } from "@/helpers/dayjs";
+import Image from "next/image";
 import Avatar from "../Avatar";
 
 interface MessageProps {
@@ -20,6 +21,7 @@ const Message = ({
   senderImage,
   time,
 }: MessageProps) => {
+  console.log({ messageText });
   return (
     <div
       className="grid w-full grid-cols-[40px_1fr] gap-3 mx-auto"
@@ -35,6 +37,11 @@ const Message = ({
             {fromNow(time)}
           </span>
         </div>
+        {messageImage && (
+          <div className="overflow-hidden rounded-md mx-[0.6rem] max-w-[80%]">
+            <Image src={messageImage} width={300} height={300} alt="" />
+          </div>
+        )}
         {messageText && (
           <div
             className={`p-2 break-all text-white rounded-lg ${

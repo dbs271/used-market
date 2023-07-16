@@ -6,6 +6,7 @@ import useSWRMutation from "swr/mutation";
 import { CgClose } from "react-icons/cg";
 import previewImage from "@/helpers/previewImage";
 import uploadImage from "@/helpers/uploadImage";
+import Message from "./Message";
 interface InputProps {
   receiverId: string;
   currentUserId: string;

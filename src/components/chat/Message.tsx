@@ -51,6 +51,8 @@ const Message = ({
             }`}
           >
             <p>{messageText}</p>
+            {/* <p>{messageText && messageText.replace(/^(.)(.*)$/, "$2$1")}</p>
+             */}
           </div>
         )}
       </div>
